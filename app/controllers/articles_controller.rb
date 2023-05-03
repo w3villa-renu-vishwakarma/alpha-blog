@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
   # POST /articles or /articles.json
   def create
     @article = Article.new(article_params)
-
+     @article.user = User.first
     respond_to do |format|
       if @article.save
         format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
@@ -46,6 +46,7 @@ class ArticlesController < ApplicationController
       end
     end
   end
+  validates :title, presence: true, length: { minimum: 6, maximim: 100 }
 
   # DELETE /articles/1 or /articles/1.json
   def destroy
