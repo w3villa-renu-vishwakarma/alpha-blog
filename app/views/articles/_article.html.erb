@@ -1,12 +1,29 @@
-<div id="<%= dom_id article %>">
-  <p>
-    <strong>Title:</strong>
-    <%= article.title %>
-  </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= article.description %>
-  </p>
+ <div id="<%= dom_id article %>" class="text-center align-item-center justify-content-center">
+<div class="m-4 text-center " style="width:500px">
+    <div class="card text-center">
+        <div class="card-header"> <strong>Created by </strong><%= article.user.username %>
 
 </div>
+        <div class="card-body">
+            <h5 class="card-title">    <%= article.title %>
+</h5>
+            <p class="card-text">    <%= article.description %>
+</p>
+            <a href="articles/<%=article.id%>" class="btn btn-primary">View article</a>
+            <% if logged_in? && (article.user == current_user || current_user.admin?) %>
+               <%= button_to "Edit", edit_article_path(article) %>
+               <%= button_to "Delete", article_path(article), method: :delete %>
+            <% end %>
+        </div>
+        <div class="card-footer text-muted"><%= article.created_at %>
+</div>
+    </div>
+</div>
+
+</div> 
+
+
+
+
+

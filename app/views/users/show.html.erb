@@ -1,0 +1,35 @@
+<%
+=begin%>
+ <h1>I am showing users</h1>
+<p><strong>Username : </strong><%= @user.username %></p>
+<p><strong>Email : </strong><%= @user.email %></p>
+
+<%= link_to 'Edit',edit_user_path(@user) %>
+<%= link_to 'Delete',user_path(@user), method: :delete %>
+<%= link_to 'back',users_path %> 
+<%
+=end%>
+<h1 class="text-center mt-4"><%= @user.username %>'s profile</h1>
+<%= gravatar_for @user %>
+<div class="text-center mt-4">
+        <%= link_to "Edit your profile", edit_user_path(@user) %>
+                <%= button_to "Delete your profile", user_path(current_user), method: :delete %>
+
+
+</div>
+
+
+<h3 class="text-center mt-4"><%= @user.username %>'s articles</h3>
+
+
+<div id="articles" class="text-center">
+  <% @articles.each do |article| %>
+    <%= render article %>
+    <p>
+      <%= link_to "Show this article", article %>
+    </p>
+  <% end %>
+</div>
+<%= button_to "Logout", logout_path, method: :delete , data: { confirm: 'Are you sure?' } %>
+
+<%= link_to "New article", new_article_path %>

@@ -1,14 +1,18 @@
+    <%= render "pages/navbar" %>
+
 <p style="color: green"><%= notice %></p>
 
-<h1>Articles</h1>
+<h1>Listing all Articles</h1>
 
-<div id="articles">
+
+<div id="articles" class="text-center align-item-center justify-content-center">
   <% @articles.each do |article| %>
     <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
+    
   <% end %>
 </div>
 
 <%= link_to "New article", new_article_path %>
+<div class= "apple_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>

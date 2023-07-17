@@ -1,0 +1,28 @@
+<h1 class="text-center">All categories</h1>
+
+ <div class="text-center align-item-center justify-content-center">
+ <% @categories.each do |category| %>
+<div class="m-4 text-center " style="width:500px">
+    <div class="card text-center">
+        
+        <div class="card-body">
+            
+            <p class="card-text"><%= category.name %></p>
+            <a href="categories/<%=category.id%>" class="btn btn-primary">View Category</a>
+        
+        </div>
+        <div class="card-footer text-muted">
+          <small> Created <%= time_ago_in_words(category.created_at) %> ago,
+          edited <%= time_ago_in_words(category.updated_at) %></small>
+          </div>
+        
+    </div>
+</div>
+            <% end %>
+
+</div> 
+
+
+
+
+
